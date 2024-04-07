@@ -9,10 +9,6 @@
 - **LengthRangeValidator**: Validates that the string length is within a specified range with field name in the customized message.
 - **IsNotEmptyValidation**: Validates that the string is not empty with field name in the customized message.
 
-## How to create your own npm library
-
-
-
 ## Installation
 
 Install `my-custom-validators` using npm:
@@ -21,7 +17,7 @@ Install `my-custom-validators` using npm:
 npm install my-custom-validators
 ```
 
-## Sample how usage
+## Sample how to use
 
 ```TypeScript
 import { LengthRangeValidator, MaxLengthValidator, MinLengthValidator, IsNotEmptyValidation } from 'my-custom-validators';
@@ -61,5 +57,4 @@ async function validateUser() {
 }
 
 validateUser();
-
 ```
