@@ -7,7 +7,11 @@
 - **MaxLengthValidator**: Validates the maximum length of the string with field name in the customized message.
 - **MinLengthValidator**: Validates the maximum length of the string with field name in the customized message.
 - **LengthRangeValidator**: Validates that the string length is within a specified range with field name in the customized message.
-- **IsNotEmptyValidation**: Validates that the string is not empty with field name in the customized message.
+- **IsNotEmptyValidator**: Validates that the string is not empty with field name in the customized message.
+- **MaxValidator**: Validates the maximum of the decimal with field name in the customized message.
+- **MinValidator**: Validates the maximum of the decimal with field name in the customized message.
+- **RangeValidator**: Validates that the decimal is within a specified range with field name in the customized message.
+
 
 ## Installation
 
@@ -20,27 +24,45 @@ npm install my-custom-validators
 ## Sample how to use
 
 ```TypeScript
-import { LengthRangeValidator, MaxLengthValidator, MinLengthValidator, IsNotEmptyValidation } from 'my-custom-validators';
-import { validate } from 'class-validator';
+import { 
+  LengthRangeValidator, 
+  MaxLengthValidator, 
+  MinLengthValidator, 
+  IsNotEmptyValidator, 
+  MinValidator, 
+  MaxValidator, 
+  RangeValidator 
+} from 'my-custom-validators';
 
 class User {
-  @LengthRange(5, 15, { message: 'Username must be between 5 and 15 characters.' })
+  @LengthRangeValidator(5, 15)
+  @IsNotEmptyValidator()
   username: string;
 
-  @LengthRange(8, 16)
+  @LengthRangeValidator(8, 16)
+  @IsNotEmptyValidator()
   password: string;
 
-  @MaxLengthCustom(20, { message: 'Bio must not exceed 20 characters.' })
+  @MaxLengthValidator(20, { message: 'Bio must not exceed 20 characters.' })
   bio: string;
 
-  @MaxLengthCustom(14)
+  @MaxLengthValidator(14)
   phone: string;
 
-  @MinLengthCustom(20)
+  @MinLengthValidator(3)
   First: string;
 
-  @MinLengthCustom(20, { message: 'lastName must not exceed 20 characters.' })
+  @MinLengthValidator(3, { message: 'Last Name must be more than 3 characters.' })
   lastName: string;
+
+  @MinValidator(0)
+  amount: number;
+
+  @maxValidator(999999)
+  value: number;
+
+  @RangeValidator(0, 100)
+  proporsion: number;
 }
 
 async function validateUser() {
