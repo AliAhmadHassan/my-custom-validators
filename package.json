@@ -1,7 +1,7 @@
 {
   "name": "my-custom-validators",
-  "version": "1.0.0",
-  "description": "A custom validation library for Node.js using class-validator.",
+  "version": "1.0.2",
+  "description": "A custom validation library for Node.js using class-validator, standardizing the error messages that will be sent to the system that consumes the service.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

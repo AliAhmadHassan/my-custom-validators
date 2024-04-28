@@ -4,31 +4,26 @@ import {
     registerDecorator,
 } from 'class-validator';
 
-export function LengthRangeValidator(
-    minLength: number,
-    maxLength: number,
+export function MinValidator(
+    min: number,
     validationOptions?: ValidationOptions,
 ) {
     // eslint-disable-next-line @typescript-eslint/ban-types
     return function (object: Object, propertyName: string) {
         registerDecorator({
-            name: 'LengthRangeCustomValidator',
+            name: 'MinCustomValidator',
             target: object.constructor,
             propertyName: propertyName,
             options: validationOptions,
-            constraints: [minLength, maxLength],
+            constraints: [min],
             validator: {
                 validate(value: any, args: ValidationArguments) {
-                    const [min, max] = args.constraints;
-                    return (
-                        typeof value === 'string' &&
-                        value.length >= min &&
-                        value.length <= max
-                    );
+                    const [minValue] = args.constraints;
+                    return typeof value === 'number' && value >= minValue;
                 },
                 defaultMessage(args: ValidationArguments) {
-                    const [min, max] = args.constraints;
-                    return `${args.property} must be between ${min} and ${max} characters`;
+                    const [minValue] = args.constraints;
+                    return `${args.property} must be more than ${minValue}`;
                 },
             },
         });

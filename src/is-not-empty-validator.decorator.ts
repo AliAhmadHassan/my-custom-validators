@@ -7,7 +7,7 @@ import {
 export function IsNotEmptyValidation(validationOptions?: ValidationOptions) {
     return function (object: any, propertyName: string) {
         registerDecorator({
-            name: 'IsNotEmptyCustom',
+            name: 'IsNotEmptyCustomValidation',
             target: object.constructor,
             propertyName: propertyName,
             options: validationOptions,

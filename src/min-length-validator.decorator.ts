@@ -11,7 +11,7 @@ export function MinLengthValidator(
     // eslint-disable-next-line @typescript-eslint/ban-types
     return function (object: Object, propertyName: string) {
         registerDecorator({
-            name: 'MaxLengthCustom',
+            name: 'MinLengthCustomValidator',
             target: object.constructor,
             propertyName: propertyName,
             options: validationOptions,
@@ -19,7 +19,7 @@ export function MinLengthValidator(
             validator: {
                 validate(value: any, args: ValidationArguments) {
                     const [limit] = args.constraints;
-                    return typeof value === 'string' && value.length <= limit;
+                    return typeof value === 'string' && value.length >= limit;
                 },
                 defaultMessage(args: ValidationArguments) {
                     const [limit] = args.constraints;

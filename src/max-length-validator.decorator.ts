@@ -11,7 +11,7 @@ export function MaxLengthValidator(
     // eslint-disable-next-line @typescript-eslint/ban-types
     return function (object: Object, propertyName: string) {
         registerDecorator({
-            name: 'MaxLengthCustom',
+            name: 'MaxLengthCustomValidator',
             target: object.constructor,
             propertyName: propertyName,
             options: validationOptions,
