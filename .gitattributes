@@ -1,0 +1,2 @@
+# Force NODE.JS highlighting and statistics for .ts files
+*.ts linguist-language=Node.JS
